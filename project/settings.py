@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'user.apps.UserConfig',
+    'short_url.apps.ShortUrlConfig',
 ]
 
 MIDDLEWARE = [
@@ -118,6 +119,6 @@ STATIC_URL = '/static/'
 
 # ==================== 区分开发者模式 ==================== #
 if DEBUG:
-    from project.config.local import *
+    from project.config.dev import *
 else:
     from project.config.prod import *

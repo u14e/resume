@@ -18,3 +18,6 @@ DATABASES = {
         },
     }
 }
+
+# 控制台本地查看邮件发送信息
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
