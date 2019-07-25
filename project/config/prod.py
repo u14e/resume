@@ -2,6 +2,7 @@
 # @Author:      u14e
 # @Time:        2019/07/23 20:26
 # @Description:
+from .common import *
 from decouple import config
 
 
@@ -19,3 +20,5 @@ DATABASES = {
         },
     }
 }
+
+CACHES['default']['OPTIONS']['PASSWORD'] = config('')

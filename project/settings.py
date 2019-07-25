@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'rest_framework',
+
     'user.apps.UserConfig',
 ]
 
@@ -112,11 +114,6 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
-# ==================== 用户相关 ==================== #
-# 自定义用户Model
-AUTH_USER_MODEL = 'user.User'
 
 
 # ==================== 区分开发者模式 ==================== #

@@ -2,6 +2,7 @@
 # @Author:      u14e
 # @Time:        2019/07/23 20:26
 # @Description:
+from .common import *
 
 DATABASES = {
     'default': {
