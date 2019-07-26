@@ -21,4 +21,4 @@ DATABASES = {
     }
 }
 
-CACHES['default']['OPTIONS']['PASSWORD'] = config('')
+# CACHES['default']['OPTIONS']['PASSWORD'] = config('')
