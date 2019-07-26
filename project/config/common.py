@@ -2,6 +2,7 @@
 # @Author:      u14e
 # @Time:        2019/07/23 22:20
 # @Description:
+from decouple import config
 
 # ==================== 用户相关 ==================== #
 # 自定义用户Model
@@ -17,3 +18,7 @@ CACHES = {
         }
     }
 }
+
+EMAIL_USER = config('EMAIL_USER', default='')
+
+SHORT_URL_PREFIX = 'https://u14e.xyz/short-url/resume'

@@ -47,7 +47,8 @@ License: MIT
 Link: http://code.activestate.com/recipes/576918/
 '''
 
-DEFAULT_ALPHABET = 'mn6j2c4rv8bpygw95z7hsdaetxuk3fq'
+# DEFAULT_ALPHABET = 'mn6j2c4rv8bpygw95z7hsdaetxuk3fq'
+DEFAULT_ALPHABET = 'JedR8LNFY2j6MrhkBSADUyfP5amuH9xQCX4VqbgpsGtnW7vc3TwKE'
 DEFAULT_BLOCK_SIZE = 24
 MIN_LENGTH = 6
 

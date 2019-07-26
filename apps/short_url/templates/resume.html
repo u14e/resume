@@ -1,0 +1,138 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>简历</title>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static "css/resume.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "iconfont/iconfont.css" %}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <section class="title">
+        <h1>{{ header.title.name }}</h1>
+        <h2>{{ education.name}} {{ education.time }}</h2>
+      </section>
+      <address>
+        <ul class="contacts">
+          <li class="icon-phone phone"><a href="#">{{ header.contacts.phone }}</a></li>
+          <li class="icon-mail"><a href="mailto:{{ header.contacts.mail }}">{{ header.contacts.mail }}</a></li>
+          <li class="icon-github"><a href="{{ header.contacts.github.href }}">{{ header.contacts.github.name }}</a></li>
+          <li class="icon-blog"><a href="{{ header.contacts.blog.href }}">{{ header.contacts.blog.name }}</a></li>
+        </ul>
+      </address>
+    </header>
+
+    {% autoescape off %}
+    <article class="content">
+      <article class="column-6">
+        <section class="experience">
+          <div class="sec-title-wrapper icon-rocket">
+            <h3 class="sec-title">
+              <span class="sec-zh">项目经历</span>
+              <span class="sec-en">Experience</span>
+            </h3>
+          </div>
+          <div class="timeline-wrapper">
+            <ul class="sec-content timeline">
+              {% for val in experience1 %}
+                <li class="timeline-item icon-bag">
+                  <h3 class="timeline-title">
+                    <span class="experience-place">{{ val.title.place }}</span>
+                    {% if val.title.time %}
+                      <time class="experience-time">{{ val.title.time }}</time>
+                    {% endif %}
+                  </h3>
+                <dl class="experience-content">
+                  {% if val.content.desc %}
+                    <dt class="experience-desc">{{ val.content.desc }}</dt>
+                  {% endif %}
+                  {% for task in val.content.tasks %}
+                    <dd class="experience-task icon-gear">{{ task }}</dd>
+                  {% endfor %}
+                </dl>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </section>
+      </article>
+
+      <article class="column-6 column">
+        <section class="experience">
+          <div class="sec-title-wrapper icon-rocket">
+            <h3 class="sec-title">
+              <span class="sec-zh">工作经验</span>
+              <span class="sec-en">Experience</span>
+            </h3>
+          </div>
+          <div class="timeline-wrapper">
+            <ul class="sec-content timeline">
+              {% for val in experience %}
+                <li class="timeline-item icon-bag">
+                  <h3 class="timeline-title">
+                    <span class="experience-place">{{ val.title.place }}</span>
+                    {% if val.title.time %}
+                      <time class="experience-time">{{ val.title.time }}</time>
+                    {% endif %}
+                  </h3>
+                <dl class="experience-content">
+                  {% if val.content.position %}
+                    <dt class="experience-position">{{ val.content.position }}</dt>
+                  {% endif %}
+                  {% for task in val.content.tasks %}
+                    <dd class="experience-task icon-gear">{{ task }}</dd>
+                  {% endfor %}
+                </dl>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </section>
+
+        <section class="language">
+          <div class="sec-title-wrapper icon-chat">
+            <h3 class="sec-title">
+              <span class="sec-zh">语言水平(CET-6 通过)</span><span class="sec-en">Language</span>
+            </h3>
+          </div>
+          <div class="sec-content">
+            <ul class="language-skills">
+              {% for val in language.skills %}
+                <li class="icon-star">{{ val }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </section>
+
+        <section class="skills">
+          <div class="sec-title-wrapper icon-wrench">
+            <h3 class="sec-title"><span class="sec-zh">技能</span><span class="sec-en">Skills</span></h3>
+          </div>
+          <div class="timeline-wrapper">
+            <ul class="sec-content timeline">
+              <li class="timeline-item icon-gears">
+                <h3 class="timeline-title"><span class="skill">{{ skills.gears.name }}</span></h3>
+                {% for skill in skills.gears.skill %}
+                  <dl class="skill-content">
+                    <dt class="skill-name">{{ skill.name }}</dt>
+                    {% for desc in skill.description %}
+                      <dd class="skill-description icon-star">{{ desc }}</dd>
+                    {% endfor %}
+                  </dl>
+                {% endfor %}
+              </li>
+            </ul>
+          </div>
+        </section>
+      </article>
+    </article>
+    {% endautoescape %}
+  </div>
+</body>
+</html>

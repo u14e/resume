@@ -1,13 +1,11 @@
 from django.db import models
 from django.utils import timezone
 from libs.short_url import encode_url
+from django.conf import settings
 
 
 class ShortUrl(models.Model):
-    token = models.CharField(max_length=10,
-                             unique=True,
-                             db_index=True,
-                             verbose_name='短网址 hash')
+    token = models.CharField(max_length=10, db_index=True, verbose_name='短网址 hash')
     original_url = models.CharField(max_length=10, verbose_name='源地址')
     is_expired = models.BooleanField(default=False, verbose_name='标识是否过期')
     created_at = models.DateTimeField(default=timezone.now)
@@ -27,4 +25,9 @@ class ShortUrl(models.Model):
     @classmethod
     def shorten(cls, original_url):
         instance = cls.objects.create(original_url=original_url)
-        instance.save()
+        return instance
+
+    @property
+    def short_url(self):
+        return '{}/{}/'.format(settings.SHORT_URL_PREFIX,
+                               self.token)

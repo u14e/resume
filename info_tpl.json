@@ -1,0 +1,142 @@
+{
+  "Author": "u14e - Inspired by Joyee Cheung",
+  "title": "简历",
+  "header": {
+    "title": {
+      "name": "u14e",
+      "job": "Python Web 开发"
+    },
+    "contacts": {
+      "phone": "13011110000",
+      "mail": "foo@u14e.xyz",
+      "github": {
+        "href": "https://github.com/u14e",
+        "name": "github: https://github.com/u14e"
+      },
+      "blog": {
+        "href": "https://www.jianshu.com/u/b0799595d27f",
+        "name": "简书博客: https://www.jianshu.com/u/b0799595d27f"
+      }
+    }
+  },
+  "education": {
+    "time": " (2020-2035) ",
+    "name": "xx大学",
+    "major": "xx",
+    "honor": []
+  },
+  "language": {
+    "cert": [
+      {
+        "name": "CET-6",
+        "grade": 488,
+        "fullmarks": 710
+      }
+    ],
+    "skills": [
+      "使用 Google 与 Stack Overflow 解决开发问题",
+      "能够阅读官方技术文档和书籍"
+    ]
+  },
+  "experience": [
+    {
+      "title": {
+        "place": "xx 有限公司",
+        "time": "2020.5-至今"
+      },
+      "content": {
+        "position": "Python 开发",
+        "tasks": [
+          "工作角色",
+          "工作内容",
+          "荣誉"
+        ]
+      }
+    },
+    {
+      "title": {
+        "place": "XX 公司",
+        "time": "2010.5-2019.11"
+      },
+      "content": {
+        "position": "前端开发",
+        "tasks": [
+          "工作内容"
+        ]
+      }
+    }
+  ],
+  "experience1": [
+    {
+      "title": {
+        "place": "项目1",
+        "time": "2019.2-2029.5"
+      },
+      "content": {
+        "desc": "项目描述",
+        "tasks": [
+          "项目模块",
+          "项目开发担任的角色",
+          "项目技术"
+        ]
+      }
+    },
+    {
+      "title": {
+        "place": "项目2",
+        "time": "2018.10-2019.06"
+      },
+      "content": {
+        "desc": "项目描述",
+        "tasks": [
+          "项目模块",
+          "项目开发担任的角色",
+          "项目技术"
+        ]
+      }
+    },
+    {
+      "title": {
+        "place": "项目3",
+        "time": "2018.10-2019.06"
+      },
+      "content": {
+        "desc": "项目描述",
+        "tasks": [
+          "项目模块",
+          "项目开发担任的角色",
+          "项目技术"
+        ]
+      }
+    },
+    {
+      "title": {
+        "place": "项目4",
+        "time": "2018.10-2019.06"
+      },
+      "content": {
+        "desc": "项目描述",
+        "tasks": [
+          "项目模块",
+          "项目开发担任的角色",
+          "项目技术"
+        ]
+      }
+    }
+  ],
+  "skills": {
+    "gears": {
+      "name": "",
+      "skill": [
+        {
+          "name": "`日常技能`",
+          "description": [
+            "熟悉常见的 `数据结构和算法`",
+            "熟悉 `Python` 语言, 以及 `Django`, `Flask` 框架",
+            "熟悉 `前端` 开发, 熟悉 `Vue` 技术栈"
+          ]
+        }
+      ]
+    }
+  }
+}

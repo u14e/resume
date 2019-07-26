@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             name='ShortUrl',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('token', models.CharField(db_index=True, max_length=10, unique=True, verbose_name='短网址 hash')),
+                ('token', models.CharField(db_index=True, max_length=10, verbose_name='短网址 hash')),
                 ('original_url', models.CharField(max_length=10, verbose_name='源地址')),
                 ('is_expired', models.BooleanField(default=False, verbose_name='标识是否过期')),
                 ('created_at', models.DateTimeField(default=django.utils.timezone.now)),

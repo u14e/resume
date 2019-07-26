@@ -12,4 +12,6 @@ router.register(r'', views.ShortUrlViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('apply/', views.ShortUrlApply.as_view(), name='short_url_apply'),
+    path('resume/<str:token>/', views.ShortUrlRead.as_view(), name='short_url_read')
 ]
