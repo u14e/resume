@@ -19,6 +19,8 @@ CACHES = {
     }
 }
 
-EMAIL_USER = config('EMAIL_USER', default='')
+EMAIL_USER = config('EMAIL_USER')
+EMAIL_PASSWORD = config('EMAIL_PASSWORD')
+EMAIL_HOST = 'smtp.exmail.qq.com'
 
 SHORT_URL_PREFIX = 'https://u14e.xyz/short-url/resume'

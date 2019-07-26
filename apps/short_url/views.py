@@ -18,6 +18,8 @@ User = get_user_model()
 
 
 class ShortUrlApply(APIView):
+    authentication_classes = ()
+
     def post(self, request, *args, **kwargs):
         serializer = ApplySerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
