@@ -17,3 +17,8 @@ class ShortUrlSerializer(serializers.ModelSerializer):
 class ApplySerializer(serializers.Serializer):
     email = serializers.EmailField()
     original_url = serializers.CharField()
+
+
+class ApplyRandomSerializer(serializers.Serializer):
+    message = serializers.CharField(min_length=10)
+    original_url = serializers.CharField()

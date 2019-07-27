@@ -31,3 +31,13 @@ class ShortUrl(models.Model):
     def short_url(self):
         return '{}/{}/'.format(settings.SHORT_URL_PREFIX,
                                self.token)
+
+
+class ShortUrlMessage(models.Model):
+    message = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        verbose_name = '留言'
+        verbose_name_plural = verbose_name
+        ordering = ['-created_at']

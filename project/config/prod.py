@@ -21,4 +21,12 @@ DATABASES = {
     }
 }
 
-# CACHES['default']['OPTIONS']['PASSWORD'] = config('')
+# CACHES['default']['OPTIONS']['PASSWORD'] = config('REDIS_PASSWORD')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = config('EMAIL_USER')          # 我的邮箱帐号
+EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')  # 授权码
+EMAIL_USE_TLS = True    # 开启安全链接
+DEFAULT_FROM_EMAIL = SERVER_EMAIL = EMAIL_HOST_USER  # 设置发件人

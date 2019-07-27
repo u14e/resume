@@ -9,9 +9,10 @@ import json
 import os
 import re
 from django.conf import settings
+import random
 
-from short_url.models import ShortUrl
-from short_url.serializers import ShortUrlSerializer, ApplySerializer
+from short_url.models import ShortUrl, ShortUrlMessage
+from short_url.serializers import ShortUrlSerializer, ApplySerializer, ApplyRandomSerializer
 from short_url.email import send_apply_email
 
 User = get_user_model()
@@ -28,6 +29,22 @@ class ShortUrlApply(APIView):
         short_url = ShortUrl.shorten(data['original_url'])
         send_apply_email(short_url.short_url, user.username)
         return Response(status=status.HTTP_200_OK)
+
+
+class ShortUrlApplyRandom(APIView):
+    authentication_classes = ()
+
+    def post(self, request, *args, **kwargs):
+        serializer = ApplyRandomSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        i = random.randint(1, 3)
+        if i != 1:
+            return Response({'short_url': ''})
+
+        data = serializer.data
+        ShortUrlMessage.objects.create(message=data['message'])
+        short_url = ShortUrl.shorten(data['original_url'])
+        return Response({'short_url': short_url.short_url})
 
 
 class ShortUrlRead(View):
