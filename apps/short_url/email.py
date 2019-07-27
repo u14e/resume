@@ -5,6 +5,7 @@
 from django.core.mail import send_mail
 from django.conf import settings
 import threading
+import yagmail
 
 
 def send_apply_email(short_url, recipient):
@@ -20,4 +21,11 @@ def send_async_apply_email(short_url, recipient):
         下面是我的在线简历的地址, 希望能够得到您的反馈(此链接地址只能访问一次, 请谨慎使用):
         {short_url}
     '''.format(recipient=recipient, short_url=short_url)
-    send_mail(subject, message, settings.EMAIL_HOST_USER, [recipient])
+
+    if settings.DEBUG:
+        return send_mail(subject, message, settings.EMAIL_HOST_USER, [recipient])
+
+    with yagmail.SMTP(user=settings.EMAIL_HOST_USER,
+                      password=settings.EMAIL_HOST_PASSWORD,
+                      host=settings.EMAIL_HOST) as yag:
+        yag.send([recipient], subject, message)

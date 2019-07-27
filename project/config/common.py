@@ -20,3 +20,8 @@ CACHES = {
 }
 
 SHORT_URL_PREFIX = 'https://u14e.xyz/short-url/resume'
+
+# ==================== 邮箱配置 ==================== #
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_USER')          # 我的邮箱帐号
+EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')  # 授权码
