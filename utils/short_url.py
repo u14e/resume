@@ -21,6 +21,14 @@ def encode(num):
     return ''.join(res)
 
 
+def encode_1(num):
+    """递归版"""
+    base = len(CHARS)
+    if num < base:
+        return CHARS[num]
+    return encode_1(num // base) + CHARS[num % base]
+
+
 def test_encode():
     """
     https://tool.lu/hexconvert/

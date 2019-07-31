@@ -10,6 +10,7 @@ import os
 import re
 from django.conf import settings
 import random
+from django.utils import timezone
 
 from short_url.models import ShortUrl, ShortUrlMessage
 from short_url.serializers import ShortUrlSerializer, ApplySerializer, ApplyRandomSerializer
@@ -26,7 +27,8 @@ class ShortUrlApply(APIView):
         serializer.is_valid(raise_exception=True)
         data = serializer.data
         user, _ = User.objects.get_or_create(username=data['email'])
-        short_url = ShortUrl.shorten(data['original_url'])
+        short_url = ShortUrl.shorten(data['original_url'],
+                                     created_by=data['email'])
         send_apply_email(short_url.short_url, user.username)
         return Response(status=status.HTTP_200_OK)
 
@@ -43,7 +45,8 @@ class ShortUrlApplyRandom(APIView):
 
         data = serializer.data
         ShortUrlMessage.objects.create(message=data['message'])
-        short_url = ShortUrl.shorten(data['original_url'])
+        short_url = ShortUrl.shorten(data['original_url'],
+                                     created_by='')
         return Response({'short_url': short_url.short_url})
 
 
@@ -54,6 +57,7 @@ class ShortUrlRead(View):
         try:
             short_url = ShortUrl.objects.get(token=token, is_expired=False)
             short_url.is_expired = True
+            short_url.expired_at = timezone.now()
             short_url.save()
         except ShortUrl.DoesNotExist:
             raise Http404

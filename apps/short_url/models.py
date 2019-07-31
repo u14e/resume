@@ -9,6 +9,8 @@ class ShortUrl(models.Model):
     original_url = models.CharField(max_length=100, verbose_name='源地址')
     is_expired = models.BooleanField(default=False, verbose_name='标识是否过期')
     created_at = models.DateTimeField(default=timezone.now)
+    expired_at = models.DateTimeField(null=True, blank=True, verbose_name='过期时间')
+    created_by = models.CharField(max_length=100, default='')
 
     class Meta:
         verbose_name = '短网址'
@@ -23,8 +25,8 @@ class ShortUrl(models.Model):
             self.save()
 
     @classmethod
-    def shorten(cls, original_url):
-        instance = cls.objects.create(original_url=original_url)
+    def shorten(cls, original_url, **kwargs):
+        instance = cls.objects.create(original_url=original_url, **kwargs)
         return instance
 
     @property
